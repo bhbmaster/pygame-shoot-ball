@@ -4,33 +4,38 @@ import sys
 import random
 import math
 
-version = "0.0.1"
-X = 1000
-Y = 1000
+version = "0.0.2"
 FPS = 30
-DIAGONAL = math.sqrt(X**2 + Y**2)
 
 pygame.init()
-clock = pygame.time.Clock()
+DisplayInfo=pygame.display.Info()
+ratioDisplayX = 0.75
+ratioDisplayY = 0.75
+X = int(DisplayInfo.current_w * ratioDisplayX)
+Y = int(DisplayInfo.current_h * ratioDisplayY)
+DIAGONAL = math.sqrt(X**2 + Y**2)
 surface = pygame.display.set_mode((X,Y))
-pygame.display.set_caption(f"Shoot Ball v{version}")
+pygame.display.set_caption(f"Shoot Ball v{version} - {X}x{Y}")
+clock = pygame.time.Clock()
 
 grey = pygame.Color(50,50,50)
 yellow = pygame.Color(200,200,0)
 red = pygame.Color(200, 20, 0)
 
-font = pygame.font.Font("FiraCode-Bold.ttf", 12)
+font = pygame.font.Font("FiraCode-Bold.ttf", 18) # 32 fits nicely when screen 1000x1000
 msg = "Shoot the ball by clicking on the screen"
 
 circle_exists = False
 circle_time_mover = 0
 circle_min_speed = 0.5
-circle_max_speed = 30
+circle_max_speed = int(DIAGONAL/47) # gets us speed of around ~30 in 1000 by 1000 (1414 diag)
 circle_speed = 0
 circle_fire_degrees = 0
-circle_radius = 50
+circle_radius = int(DIAGONAL/28) # gets us ball of size 50 in 1000 by 1000 (1414 diag)
 circle_shades = 20
 circle_mouse_pos = []
+
+print(f"* Shoot Ball v{version} - Window Size {X}x{Y} - MaxSpeed: {circle_max_speed} - Radius: {circle_radius}")
 
 while True:
     surface.fill(grey)
@@ -48,8 +53,8 @@ while True:
             circle_mouse_pos.append((x_mouse , y_mouse)) # note: doesn't have to be list (only 1 item saved with each mousedown and mouseup set)
             # circle_exists = True
             # circle_time_mover = 0
-            #mx = random.choice([-1,0,1])
-            #my = random.choice([-1,0,1])
+            # mx = random.choice([-1,0,1])
+            # my = random.choice([-1,0,1])
             # mx = math.cos(circle_fire_degrees*math.pi/180)
             # my = -math.sin(circle_fire_degrees*math.pi/180)
         if ev.type == pygame.locals.MOUSEBUTTONUP:
@@ -102,16 +107,10 @@ while True:
     # msg - make into class
     msg_surface = font.render(msg, True, red)
     msg_rect = msg_surface.get_rect()
-    msg_rect.topleft = (90,100)
+    msg_rect.topleft = (X/15,Y/10) # (90,100) works good for 1000x1000
     surface.blit(msg_surface,msg_rect)
     # screen update
     pygame.display.update()
     clock.tick(FPS)
 
 # EOF
-
-
-
-
-
-
