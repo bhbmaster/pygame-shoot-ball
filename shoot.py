@@ -1,5 +1,4 @@
 import pygame
-import pygame.locals
 import sys
 import random
 import math
@@ -44,11 +43,11 @@ while True:
     # events
     events = pygame.event.get()
     for ev in events:
-        if ev.type == pygame.locals.QUIT or (ev.type == pygame.locals.KEYUP and ev.key == pygame.locals.K_q):
+        if ev.type == pygame.QUIT or (ev.type == pygame.KEYUP and ev.key == pygame.K_q):
             # quit game if press X or hit q key
             pygame.display.quit()
             sys.exit()
-        if ev.type == pygame.locals.MOUSEBUTTONDOWN:
+        if ev.type == pygame.MOUSEBUTTONDOWN:
             x_mouse , y_mouse = ev.pos
             circle_mouse_pos.append((x_mouse , y_mouse)) # note: doesn't have to be list (only 1 item saved with each mousedown and mouseup set)
             # circle_exists = True
@@ -57,7 +56,7 @@ while True:
             # my = random.choice([-1,0,1])
             # mx = math.cos(circle_fire_degrees*math.pi/180)
             # my = -math.sin(circle_fire_degrees*math.pi/180)
-        if ev.type == pygame.locals.MOUSEBUTTONUP:
+        if ev.type == pygame.MOUSEBUTTONUP:
             x_mouse , y_mouse = ev.pos
             x0=circle_mouse_pos[0][0]
             y0=circle_mouse_pos[0][1]
