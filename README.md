@@ -1,7 +1,11 @@
 # Pygame shoot ball
 
-Launch with python shoot.py
+Implented twice once as function only (func) and once as object oriented (class).
 
-Launch balls with mouse down, drag, release. Ball will launch towards mouse vector.
+Launch with "python funcBallShoot.py" or "python classBallShoot.py".
+
+Launch ball[s] with mouse down, drag, release.
+
+Ball will launch towards mouse vector.
 
 Requirements: python 3.9+, pygame
