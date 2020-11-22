@@ -5,10 +5,11 @@ import math
 
 # global vars
 version = "0.0.5c"
+MAIN_MESSAGE=f"Shoot balls by click dragging. Timely strokes = Big. Long strokes = fast!"
 FPS = 60
 SHADES_PER_CIRCLE = 20
 MAX_SECOND_HOLD = 1000            # how many milliseconds hold generate max gold
-Scale = 0.75                      # percent size of full screen . 1 = full screen
+Scale = 0.8                      # percent size of full screen . 1 = full screen
 Red = pygame.Color(200, 20, 0)    # text color
 Grey = pygame.Color(50,50,50)     # background color
 # Yellow = pygame.Color(200,200,0)
@@ -196,7 +197,7 @@ class Main:
                     # HERE
             
             # init message + title bar
-            msg = Message(f"Shoot balls by click dragging on the screen. Longer strokes = more speed. Quicker strokes = smaller ball.",self.X/15,self.Y/10,Red)
+            msg = Message(MAIN_MESSAGE,self.X/15,self.Y/10,Red)
             # extra_title_string = f" -  FPS: {int(self.clock.get_fps())} - BALLS: {len(balls)} - CIRCLE_DRAWS: {SHADES_PER_CIRCLE*len(balls)}"
             extra_title_string = f" - {int(self.clock.get_fps())} fps - {len(balls)} balls"
             pygame.display.set_caption(main_title_string+extra_title_string)
