@@ -3,6 +3,7 @@ import sys
 import random
 import math
 
+# global vars
 version = "0.0.5c"
 FPS = 60
 SHADES_PER_CIRCLE = 20
