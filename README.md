@@ -6,6 +6,6 @@ Launch with "python funcBallShoot.py" or "python classBallShoot.py".
 
 Launch ball[s] with mouse down, drag, release.
 
-Ball will launch towards mouse vector.
+Ball[s] will launch towards mouse vector.
 
-Requirements: python 3.9+, pygame
+Requirements: python 3.9+, pygame (check requirements.txt for min tested version)
